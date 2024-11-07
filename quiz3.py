@@ -60,3 +60,17 @@
 #kedim = Kedi("Tonton")
 #print(kedim.yasiCarp())
 
+#9) Aşağıdaki kodun çıktısı ne olacaktır?
+class Ogrenci():
+
+    def __init__(self, isim, sinavNotu):
+        self.isim = isim
+        self.__sinavNotu = sinavNotu
+
+    def notuGoster(self):
+        print(f"{self.isim} sınav notu: {self.__sinavNotu}")
+
+ogrenci = Ogrenci("Mehmet",85)
+ogrenci.__sinavNotu = 75
+ogrenci.notuGoster()
+
