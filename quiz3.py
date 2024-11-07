@@ -9,8 +9,12 @@
 
 #usselIslem()
 
-def myLoop(*args):
-    for element in args:
-        print(element / 2)
+#def myLoop(*args):
+#    for element in args:
+#        print(element / 2)
 
-myLoop(3,2,1,5,3,4)
+#myLoop(3,2,1,5,3,4)
+
+def myFunc(num):
+    return num ** 3
+
