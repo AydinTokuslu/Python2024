@@ -30,3 +30,7 @@
 #print(newList)
 
 #print(list(map(myFunc,myList)))
+
+#6) Aşağıdaki string dizisinde, içinde sadece XYZ geçen barkodları gösterecek yeni bir liste oluşturunuz
+barkodDizisi = ["ABC231","SA3123XYZ","XYZA123Q","QRE1231KJ","X112QGL"]
+print(list(filter(lambda string : "XYZ" in string, barkodDizisi)))
