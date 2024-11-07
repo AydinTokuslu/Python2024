@@ -36,15 +36,27 @@
 #print(list(filter(lambda string : "XYZ" in string, barkodDizisi)))
 
 #7) Aşağıdaki kodu okursanız, ornekFonksiyon çalıştırıldığında en altta yazdırılan print size neyi yazdıracaktır?
-myVar = "Atil Samancioglu"
+#myVar = "Atil Samancioglu"
 
+#def ornekFonksiyon():
+#    myVar = "Atil"
 
-def ornekFonksiyon():
-    myVar = "Atil"
+#    def digerFonksiyon():
+#        print(myVar)
 
-    def digerFonksiyon():
-        print(myVar)
+#    digerFonksiyon()
+#ornekFonksiyon()
 
-    digerFonksiyon()
+#8) Aşağıda yazdırılan sınıfı incelediğinizde kedim.yasiCarp() kodunun çıktısı ne olacaktır?
+#class Kedi():
 
-ornekFonksiyon()
+#    def __init__(self, isim, yas=5):
+#        self.isim = isim
+#        self.yas = yas
+
+#    def yasiCarp(self):
+#        return self.yas * 3
+
+#kedim = Kedi("Tonton")
+#print(kedim.yasiCarp())
+
