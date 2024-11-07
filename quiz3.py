@@ -18,3 +18,8 @@
 def myFunc(num):
     return num ** 3
 
+myList = [2,3,4,5,6]
+newList = []
+for i in myList:
+    newList.append(myFunc(i))
+print(newList)
