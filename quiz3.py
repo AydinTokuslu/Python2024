@@ -32,5 +32,19 @@
 #print(list(map(myFunc,myList)))
 
 #6) Aşağıdaki string dizisinde, içinde sadece XYZ geçen barkodları gösterecek yeni bir liste oluşturunuz
-barkodDizisi = ["ABC231","SA3123XYZ","XYZA123Q","QRE1231KJ","X112QGL"]
-print(list(filter(lambda string : "XYZ" in string, barkodDizisi)))
+#barkodDizisi = ["ABC231","SA3123XYZ","XYZA123Q","QRE1231KJ","X112QGL"]
+#print(list(filter(lambda string : "XYZ" in string, barkodDizisi)))
+
+#7) Aşağıdaki kodu okursanız, ornekFonksiyon çalıştırıldığında en altta yazdırılan print size neyi yazdıracaktır?
+myVar = "Atil Samancioglu"
+
+
+def ornekFonksiyon():
+    myVar = "Atil"
+
+    def digerFonksiyon():
+        print(myVar)
+
+    digerFonksiyon()
+
+ornekFonksiyon()
