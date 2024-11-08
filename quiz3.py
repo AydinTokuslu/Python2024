@@ -74,3 +74,4 @@ ogrenci = Ogrenci("Mehmet",85)
 ogrenci.__sinavNotu = 75
 ogrenci.notuGoster()
 
+#Abstraction
