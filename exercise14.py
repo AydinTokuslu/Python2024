@@ -18,4 +18,15 @@ def odd_even(list):
     print(f"{even} - {odd} = {even-odd}")
 
 numbers = [3, 2, 4, 6,7,8]
+
+def odd2_even2(list):
+    odd = []
+    even = []
+    for i in list:
+        if i % 2 == 0:
+            even.append(i)
+        else:
+            odd.append(i)
+    return f"{max(even)} - {min(odd)} = {max(even) - min(odd)}"
 odd_even(numbers)
+print(odd2_even2(numbers))
