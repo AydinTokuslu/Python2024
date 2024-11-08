@@ -12,6 +12,7 @@ def word_index(list):
     for i in list:
         if len(i) > max :
             max = len(i)
+
         else:
             return 0
     return list.index(i)
