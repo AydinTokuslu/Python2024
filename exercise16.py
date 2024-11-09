@@ -18,4 +18,4 @@ def maximum(list):
             max = i
     print(max)
 
-maximum(biggest_odd("23569"))
+maximum(biggest_odd("23569857"))
