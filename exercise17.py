@@ -10,12 +10,9 @@
 def zeros_last(list):
     zero_list = []
     count_zero = 0
-    #list.sort()
     for i in list:
-        #print(i)
         if i != 0:
             zero_list.append(i)
-            #list.remove(i)
         else:
             count_zero += 1
     zero_list.sort()
@@ -23,10 +20,6 @@ def zeros_last(list):
         zero_list.append(0)
     return zero_list
 
-#def new_list(count_zero, zero_list):
-
-
 numbers = [0, 1, 4, 0, 7, 6, 0, 0, 0, 9, 0]
 #numbers = [2, 1, 4, 7, 6]
 print(zeros_last(numbers))
-#new_list(zeros_last(numbers))
