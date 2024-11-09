@@ -7,7 +7,6 @@
 def equal_strings(str1,str2):
     if len(str1) == len(str2):
         for i in str1:
-            #print(i)
             if i not in str2:
                 return False
         return True
