@@ -1,8 +1,10 @@
 import cv2
 import imageio
+import numpy as np
+import cv2 as cv
 
-# 1. Get Images
-cap = cv2.VideoCapture(1) # harici camera kullanıyorsak 1, bilgisayar kamerası ise 0
+#1. Get Images
+cap = cv2.VideoCapture(0)
 
 frames = []
 image_count = 0
@@ -20,11 +22,11 @@ print("Images added: ", len(frames))
 
 
 print("Saving GIF file")
-with imageio.get_writer("smiling.gif", mode="I") as writer:
+with imageio.get_writer("gülümse.gif", mode="I") as writer:
     for idx, frame in enumerate(frames):
         print("Adding frame to GIF file: ", idx + 1)
         rgb_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-        writer.append_data(frame)
+        writer.append_data(rgb_frame)
 
 
 
