@@ -25,7 +25,6 @@ def your_salary():
     else:
         gross_salary = the_number_of_periods * 20
 
-    print(f"The teacher {name} earned {gross_salary}$ this month")
     gross_salary_x = gross_salary // 1000
     gross_salary_y = gross_salary % 1000
     gross_salary = str(gross_salary_x) + "," + str(gross_salary_y)
