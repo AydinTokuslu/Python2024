@@ -11,25 +11,31 @@ LARGE_FONT = ('Arial', 50, 'normal')
 
 screen = Screen()
 screen.bgcolor("green")
-screen.title("Python Turtle")
+screen.title("Catch The Turtle")
 
 turtle_instance = turtle.Turtle()
-turtle_instance.color("yellow")
+#turtle_instance.hideturtle()
+turtle_instance.penup()
+turtle_instance.color("dark blue")
 turtle_instance.shape("turtle")
+turtle_instance.shapesize(2, 2)
+
 
 score = 0
 score_keeper = Turtle()
 score_keeper.hideturtle()
 score_keeper.penup()
-
+top_height = screen.window_height() / 2
+y = top_height * 0.95
+score_keeper.setpos(0,y)
+score_keeper.write(arg="Score: 0", move=False, align='center', font=SMALL_FONT)
 
 def update_score():
     global score
 
     score += 1
     score_keeper.clear()
-    score_keeper.sety(320)
-    score_keeper.write(f"Score: {score}", align='center', font=SMALL_FONT)
+    score_keeper.write(arg="Score: {}".format(score), move=False, align='center', font=SMALL_FONT)
 
 seconds = int(screen.numinput("Timer", "Enter the seconds", minval=0, maxval=59))
 def turtle_disapper():
@@ -64,7 +70,7 @@ def action():
 
     if seconds <= 0:
         time_keeper.clear()
-        time_keeper.sety(270)
+        time_keeper.sety(250)
         time_keeper.write("Time Over", align='center', font=MEDIUM_FONT)
     else:
         update_time()
@@ -82,4 +88,4 @@ time_keeper = score_keeper.clone()
 turtle_instance.onclick(target_clicked)
 action()
 
-turtle.done()
+screen.mainloop()
