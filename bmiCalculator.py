@@ -2,8 +2,8 @@
 
 
 def bmiCalculation():
-    weight = int(input("please enter your weight in kg : "))
-    height = int(input("please enter your height in cm : "))/100
+    weight = float(input("please enter your weight in kg : "))
+    height = float(input("please enter your height in cm : "))/100
     bmi = (weight / (height * height))
     print(bmi)
     if bmi < 16 :
