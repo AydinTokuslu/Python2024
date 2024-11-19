@@ -15,11 +15,10 @@ def bmiCalculation():
         return (round(bmi, 2))
     #print(round(bmi, 2))
 
-
 def bmiResult(bmi):
     result = f"Your BMI is {bmi}. You are "
     #result = f"Your BMI is {round(bmi, 2)}. You are {bmiCalculation} "
-    if bmi < 16:
+    if bmi <= 16:
         result += "severely underweight"
     elif 16 < bmi < 18.4:
         result += "underweight"
