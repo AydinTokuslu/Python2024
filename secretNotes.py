@@ -1,4 +1,3 @@
-
 from cryptography.fernet import Fernet
 
 
@@ -30,11 +29,9 @@ def decrypt(encoded,master_key):
         except:
             continue
 
+
 def fake_decrypt(str2):
     encoded = fernet.encrypt(str2.encode())
     print(encoded)
 
 save_encrypt()
-
-
-
