@@ -25,12 +25,12 @@ def decrypt(encoded,master_key):
                 print(decoded)
                 break
             else:
-                falsch_decrypt(master_key2)
+                fake_decrypt(master_key2)
                 print("please enter the correct master key!!!!!")
         except:
             continue
 
-def falsch_decrypt(str2):
+def fake_decrypt(str2):
     encoded = fernet.encrypt(str2.encode())
     print(encoded)
 
