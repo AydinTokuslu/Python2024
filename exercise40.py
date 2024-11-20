@@ -4,14 +4,23 @@
 # there is no even number in the list, the code should return the
 # average of all the five numbers.
 
-def even_or_average():
-    maxNum = 0
-    list = []
-    for i in range(5):
-        num = int(input(f"{i+1}. sayıyı giriniz : "))
-        list.append(num)
-        if num > maxNum:
-            maxNum = num
-    return f"Maksimum numara : {maxNum}"
+list = []
+for i in range(5):
+    num = int(input(f"{i+1}. sayıyı giriniz : "))
+    list.append(num)
 
-print(even_or_average())
+def even_or_average(list):
+    average = 0
+    even_list = []
+    for i in list:
+        if i % 2 == 0:
+            even_list.append(i)
+        else:
+            average += i
+
+    if len(even_list) > 0:
+        print(f"The max even number from the entered is : {max(even_list)} ")
+    else:
+        print(f"the average of the entered numbers is : {average // len(list)}")
+
+even_or_average(list)
