@@ -12,7 +12,7 @@ def add_hash(str):
     newStr=""
     for i in str:
         newStr += i + "#"
-    return newStr
+    return newStr[:-1]
 
 def add_underscore(str1):
     newStr2 = ""
@@ -21,7 +21,7 @@ def add_underscore(str1):
             newStr2 += i + "_"
         else:
             continue
-    return newStr2
+    return newStr2[:-1]
 
 def remove_underscore(str2):
     newStr3 = ""
@@ -33,3 +33,11 @@ def remove_underscore(str2):
     return newStr3
 
 print(remove_underscore(add_underscore(add_hash("Python"))))
+
+def add_hash1(a: str):
+    return "#".join(a)
+def add_underscore1(a: str):
+    return str(a).replace("#", "_")
+def remove_underscore1(a: str):
+    return str(a).replace("_", "")
+print(remove_underscore1(add_underscore1(add_hash1('Python'))))
