@@ -12,7 +12,7 @@ def calculator():
             if opt not in ["+", "-", "*", "/"] or len(opt) > 1 :
                 print("please enter a valid operations (+ - * /) !!!!!")
         except ValueError:
-            print("please enter a valid value")
+            print("please enter a valid value, just the numbers!!!")
         except ZeroDivisionError:
             print("You cannot divide a number by zero.Try again ")
         except NameError:
