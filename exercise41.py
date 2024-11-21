@@ -8,3 +8,28 @@
 # print(remove_underscore(add_underscore(add_hash('Python'))))
 # it should return ‘Python’.
 
+def add_hash(str):
+    newStr=""
+    for i in str:
+        newStr += i + "#"
+    return newStr
+
+def add_underscore(str1):
+    newStr2 = ""
+    for i in str1:
+        if i != "#":
+            newStr2 += i + "_"
+        else:
+            continue
+    return newStr2
+
+def remove_underscore(str2):
+    newStr3 = ""
+    for i in str2:
+        if i != "_":
+            newStr3 += i
+        else:
+            continue
+    return newStr3
+
+print(remove_underscore(add_underscore(add_hash("Python"))))
