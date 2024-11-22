@@ -10,21 +10,22 @@
 # Hate and Peace will be ignored because they have at least one
 # uppercase letter.
 
-def multiply_words(str):
-    newStr = ""
+def multiply_words(s):
     sum = 1
-    for i in str.split(" "):
+    s_new = ""
+    s = s.split(" ")
+    for i in s:
         if i.islower():
             sum *= len(i)
-            newStr += i + " "
-            newStr += str(len(i)) + " "
-
+            s_new += i + " "
+            s_new += str(len(i)) + " "
         else:
             continue
-    return f"{sum} - {newStr}"
+    return f"{sum} - {s_new}"
 
-str1 = "love live and laugh"
-str = "Hate war love Peace"
-print(multiply_words(str))
+
+#s = "love live and laugh"
+s = "Hate war love Peace"
+print(multiply_words(s))
 
 
