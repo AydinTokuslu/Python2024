@@ -11,16 +11,20 @@
 # uppercase letter.
 
 def multiply_words(str):
+    newStr = ""
     sum = 1
     for i in str.split(" "):
         if i.islower():
             sum *= len(i)
+            newStr += i + " "
+            newStr += str(len(i)) + " "
+
         else:
             continue
-    print(sum)
+    return f"{sum} - {newStr}"
 
 str1 = "love live and laugh"
 str = "Hate war love Peace"
-multiply_words(str)
+print(multiply_words(str))
 
 
