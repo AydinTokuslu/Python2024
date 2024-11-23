@@ -1,7 +1,15 @@
-inputString = input() # get a line of input from stdin and save it to our variable
+# Write a function called index_position. This function takes a
+# string as a parameter and returns the positions or indexes of all
+# lower letters in the string. For example, ‘LovE’ should return
+# [1,2].
 
-# Your first line of output goes here
-print('Hello, World.')
+def index_position(s):
+    indexA = []
+    for i in s:
+        if i.islower():
+            indexA.append(s.index(i))
+    return indexA
 
-# Write the second line of output
-inputString("Welcome to 30 Days of Code!")
+
+s = "LovEr"
+print(index_position(s))
