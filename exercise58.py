@@ -17,12 +17,9 @@
 
 def create_user():
     user = {}
-    name = input("please enter your name : ")
-    user["name"] = name
-    age = int(input("please enter your age : "))
-    user["age"] = age
-    password = input("please enter your password : ")
-    user["password"] = password
+    user["name"] = input("please enter your name : ")
+    user["age"] = int(input("please enter your age : "))
+    user["password"] = input("please enter your password : ")
 
     if len(user) > 0:
         print("User saved. Please login")
@@ -35,12 +32,9 @@ def create_user():
             if name1 in user.values() and password1 in user.values() :
                 print("Logged in successfully")
                 break
-            #else:
-
-            #    print("Wrong password or user name. Please try again")
+            else:
+                print("Wrong password or user name. Please try again")
         except ValueError:
             print("please enter a valid password or user name!!!")
-
-
 
 create_user()
