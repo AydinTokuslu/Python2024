@@ -8,3 +8,24 @@
 # function should tell the users the errors in the password and
 # prompt the user to enter another password. The code should
 # only stop once the user enters a valid password. (use while loop).
+
+def password_validator():
+    password = input("please enter your password : ")
+    while True:
+        errors = []
+        if len(password) < 8 :
+            print("please enter a minimum 8 characters long password : ")
+            break
+        elif password.isdigit():
+            print("Your password should have at least one upper letter, one lower letter")
+            break
+        elif password.islower():
+            print("Your password should have at least one upper letter")
+            break
+        elif password.isupper():
+            print("Your password should have at least one lower letter")
+            break
+        else:
+            print(f"Your password is {password}")
+
+password_validator()
