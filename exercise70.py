@@ -15,7 +15,6 @@ def generate_password():
 
     while True:
         password = input("how strong want you the password? \nfor weak :1, for strong:2, for very strong :3 : ")
-        passwd = []
         if password == "1":
             get_random_string(5)
             break

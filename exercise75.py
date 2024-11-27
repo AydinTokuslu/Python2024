@@ -1,36 +1,22 @@
-class Cars:
-    def __init__(self, model, color, year,
-    transmission, electric=False):
-        self.model = model
-        self.color = color
-        self.year = year
-        self.transmission = transmission
-        self.electric = electric
-    # Creating the class method
-    def print_car(self):
-        return f'car_model = {self.model}\nColor = ' \
-                f'{self.color} \nYear = {self.year}' \
-                f' \nTransmission = {self.transmission} ' \
-                f'\nElectric = {self.electric}'
-class BMW(Cars):
-    def __init__(self, model, color, year,
-    transmission, electric=False):
-        Cars.__init__(self, model, color, year,
-        transmission, electric=electric)
-class Tesla(Cars):
-    def __init__(self, model, color, year,
-    transmission, electric=False):
-        Cars.__init__(self, model, color, year,
-        transmission, electric=electric)
-class Ford(Cars):
-    def __init__(self, model, color, year,
-    transmission, electric=False):
-        Cars.__init__(self, model, color, year,
-        transmission, electric=electric)
-# instantiating class objects
-ford1 = Ford("Focus", "White", 2017, "Auto", False)
-print(ford1.print_car())
-tesla1 = Tesla("S", "Grey", 2016, "Manual", True)
-print(tesla1.print_car())
-bmw1 = BMW('X6', 'silver', 2018, 'Auto', False)
-print(bmw1.print_car())
+# Write a function called student_marks that records marks
+# achieved by students in a test. The function should ask the user
+# to input the name of the student and then ask the user to input
+# the marks achieved by the student. The information should be
+# stored in a dictionary. The name is the key and the marks is the
+# value. When the user enters done, the function should return a
+# dictionary of names and values entered.
+
+def student_marks():
+    marks = {}
+    while True:
+        name = input("please enter your name or '0' to exit: ")
+        if name == "0":
+            break
+        else:
+            mark = input("please enter your mark : ")
+            marks[name] = mark
+
+    print(marks)
+
+
+student_marks()
