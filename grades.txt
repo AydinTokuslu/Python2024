@@ -1,0 +1,3 @@
+name_surname   avr_note  letter_grade
+aydin tt       61.6      DD        
+elif ee        59.4      FF        

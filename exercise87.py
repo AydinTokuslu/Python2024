@@ -1,5 +1,3 @@
-# öğrenci notlarının girildiği ve kaydedildiği bir program
-
 import csv
 import os
 
@@ -9,7 +7,7 @@ def students_marks():
     final_note = int(input("please enter your final note : "))
 
     avr_note = (visa_note * 0.4) + (final_note * 0.6)
-    avr_note = round(avr_note,2)
+    avr_note = round(avr_note, 2)
     print("total average note : ", avr_note)
 
     if avr_note >= 90:
@@ -40,13 +38,12 @@ def students_marks():
     # Append new data
     with open(filename, "a") as file:
         file.write(f"{name_surname:<15}{avr_note:<10}{letter_grade:<10}\n")
-        file.close()
 
+    # Display the file contents
     with open("grades.txt", mode='r', encoding="utf-8") as file:
         print(file.read())
-        file.close()
 
 
 num_of_students = int(input("how many students information will you enter (to exit hit '0') : "))
 for i in range(num_of_students):
-     students_marks()
+    students_marks()
