@@ -24,6 +24,7 @@ of the language that is not completely backward-compatible"""
 
     with open(path_w, mode='w') as f:
         f.write(s)
+        f.close()
 
     digits = []
     with open("python.csv", "r", encoding="utf-8") as file:
