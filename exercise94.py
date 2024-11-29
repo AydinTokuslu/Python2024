@@ -1,16 +1,21 @@
 
 hesap_bakiyesi = 2000
 
+
+
+
+
 def bankaIslemleri():
     while True:
-        menu = """
-        1- Para Çekme
-        2- Para Yatırma
-        3- Bakiye Görüntüleme
-        """
-
-
-        secim = int(input("işlem yapmak için 1'i çıkmak için 0'ı tuşlayınız : "))
+        secim = int(input("""
+    İşlemler
+    ----------------------
+    1- Para Çekme
+    2- Para Yatırma
+    3- Bakiye Görüntüleme
+    4- Kart İadesi
+        
+    Lütfen yapmak istediğiniz işlem numarasını giriniz (çıkmak için 0 giriniz!!!) : """))
         if secim == 1:
             cekilecekMiktar = int(input("lütfen çekmek istediğiniz bakiyeyi giriniz : "))
             if cekilecekMiktar > hesap_bakiyesi:
@@ -22,11 +27,15 @@ def bankaIslemleri():
                     exit()
             else:
                 paraCekme(cekilecekMiktar)
+        elif secim == 2:
+            paraYatirma()
+        elif secim == 3:
+            bakiyeGoruntuleme()
         elif secim == 0:
             print("Çıkış yaptınız. tekrar bekleriz, iyi günler")
             break
         else:
-            print("yanlış sayı  girdiniz, tekrar deneyiniz.")
+            print("yanlış sayı girdiniz, tekrar deneyiniz.")
 
 
 def paraYatirma():
@@ -40,7 +49,9 @@ def paraCekme(cekilecekMiktar):
     hesap_bakiyesi -= cekilecekMiktar
     print("yeni bakiyeniz : {}".format(hesap_bakiyesi))
 
-def
+def bakiyeGoruntuleme():
+    global hesap_bakiyesi
+    print("Hesabınızdaki bakiyeniz : {}".format(hesap_bakiyesi))
 
 
 bankaIslemleri()
