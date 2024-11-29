@@ -11,8 +11,6 @@ class Person:
             print("You are young.")
         elif 13 <= self.initialAge < 18:
             print("You are a teenager.")
-        elif 18 <= self.initialAge:
-            print("You are old.")
         else:
             print("You are old.")
         # Do some computations in here and print out the correct statement to the console
