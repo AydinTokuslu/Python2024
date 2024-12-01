@@ -19,16 +19,31 @@
 # Not found
 # harry=12299933
 
-if __name__ == '__main__':
-    n = int(input())
-    phone_book = {("sam", 99912222), ("tom", 11122222), ("harry", 12299933)}
-    print(phone_book)
-    for i in range(1,n+1):
-        print(phone_book[i])
-        if phone_book[i] == i:
-            print(f"{i} = {phone_book[i]} ")
-        else:
-            print("Not found")
+# Function to create a phone book and handle queries
+def phone_book():
+    n = int(input())  # Number of entries in the phone book
+    phone_book = {}  # Dictionary to store the phone book
+
+    # Reading phone book entries
+    for _ in range(n):
+        entry = input().split()
+        name, phone = entry[0], entry[1]
+        phone_book[name] = phone
+
+    # Processing queries
+    while True:
+        try:
+            query = input().strip()
+            if query in phone_book:
+                print(f"{query}={phone_book[query]}")
+            else:
+                print("Not found")
+        except EOFError:
+            break  # Exit the loop when no more input is provided
+
+# Run the phone book function
+if __name__ == "__main__":
+    phone_book()
 
 
 
