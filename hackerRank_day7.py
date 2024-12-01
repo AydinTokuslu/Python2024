@@ -12,9 +12,7 @@ if __name__ == '__main__':
     n = int(input().strip())
 
     arr = list(map(int, input().rstrip().split()))
-    print(arr[::-1])
-    test_string = ""
-    sorted(arr, key=lambda x: (-x[0], x[1]))
-    #for i in arr:
-    #    res = ''.join(sorted(i, reverse=True))
-    #print(str(res))
+    newStr = ""
+    for i in arr[::-1]:
+        newStr += str(i) + " "
+    print(newStr)
