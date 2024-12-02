@@ -1,3 +1,11 @@
 Aydın/Tokuslu/Migren
 Ayhan/Kara/Migren
 Elif/Eser/Allerji
+Cemal/Boz/Diyabet
+Ali/Berber/Genel Cerrahi
+Merve/Kabak/Migren
+Fuat/Yakar/Migren
+Sare/Eser/Migren
+Ebis/Karacı/Migren
+Nuriş/Nuriş/Migren
+Kadir/Eser/Migren

@@ -1,13 +1,19 @@
 import time
 
+#kullanıcından hasta ismi alınsın.
+#1- ilaç listesi oluşturun (Aspirin, Cibadrex, vb)
+#2- hastalık listesi oluşturalım (alerji, Başağrısı,vb.)
+#3- hastalığa ve ilaca bağlı bir reçete oluşturalım
+#4- reçeteleri ana listin içine atalım
+
 
 hastaAdi = ""
 hastaSoyadi = ""
 hastaSikayeti = ""
 ilac_ode = 0
-
-
 hasta_list = []
+
+
 recete_list = {1 : "Parol",
                2 : "Aspirin",
                3 : "Glifor",
@@ -19,7 +25,7 @@ recete_list = {1 : "Parol",
                9 : "Ventolin",
                }
 
-hastalikList=["Allerji","Basagrisi","Diyabet","Sogukalginligi","Migren","Kalp Hastaliklari","Cocuk Hastaliklari","Genel Cerrahi"]
+hastalikList=["Alerji","Basagrisi","Diyabet","Sogukalginligi","Migren","Kalp Hastaliklari","Cocuk Hastaliklari","Genel Cerrahi"]
 ilac_fiyatlari = {"Parol" : 50,
                   "Aspirin" : 40,
                   "Glifor" : 65,
@@ -31,8 +37,8 @@ ilac_fiyatlari = {"Parol" : 50,
                   "Ventolin" : 150
                   }
 
-doktor_listesi = {"Hakan" : "Allerji",
-                  "Mithat" : "Allerji",
+doktor_listesi = {"Hakan" : "Alerji",
+                  "Mithat" : "Alerji",
                   "Cemil" : "Basagrisi",
                   "Elif" : "Diyabet",
                   "Hande" : "Diyabet",
@@ -83,7 +89,9 @@ def hasta_bilgileri_goruntuleme():
             ad = bilgi[0]
             soyad = bilgi[1]
             bolum = bilgi[2]
-            print(ad,soyad,bolum)
+            #print("Hasta Bilgileri")
+            #print("-----------------")
+            print(ad+"  "+ soyad+"  "+bolum)
             dosya_m = open("Migren_hastaliklari.txt", "a", encoding="utf-8")
             if bolum == "Migren":
                 dosya_m.write(ad)
