@@ -6,6 +6,24 @@ hastaSoyadi = ""
 hastaSikayeti = ""
 
 
+doktor_listesi = {"Hakan" : "Allerji",
+                  "Mithat" : "Allerji",
+                  "Cemil" : "Basagrisi",
+                  "Elif" : "Diyabet",
+                  "Hande" : "Diyabet",
+                  "Nuray" : "Sogukalginligi",
+                  "Fatma" : "Sogukalginligi",
+                  "Aydın" : "Migren",
+                  "Enis" : "Migren",
+                  "Hüseyin" : "Kalp Hastaliklari",
+                  "Hüsamettin" : "Kalp Hastaliklari",
+                  "Fırat" : "Kalp Hastaliklari",
+                  "Hilal" : "Cocuk Hastaliklari",
+                  "Bilal" : "Cocuk Hastaliklari",
+                  "Aslı" : "Genel Cerrahi",
+                  "Asuman" : "Genel Cerrahi",
+                  "Sare" : "Genel Cerrahi" }
+
 def hasta_giris():
     global hastaAdi
     global hastaSoyadi
@@ -47,7 +65,13 @@ def recete_kontrolu():
 
 
 def randevu_al():
-    pass
+    print("Görevli Doktor Listesi : ")
+    print("S.No : Doktor İsmi :         Branşı : ")
+    print("-------------------------------------")
+    a = 0
+    for i in doktor_listesi.items():
+        a += 1
+        print("{:<3}-   Dr.{:<10} ------> {:<10}".format(a, i[0], i[1]))
 
 
 def odemek():
@@ -79,6 +103,6 @@ def main():
 
 
 
+randevu_al()
 
-
-hasta_giris()
+#hasta_giris()
