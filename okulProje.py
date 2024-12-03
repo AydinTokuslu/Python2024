@@ -3,23 +3,47 @@ okul={}
 
 
 def sinif_ekle(okul:dict):
-    sinif = input("Öğrencinin sınıfını giriniz :")
-    sube = input("Öğrencinin şubesini giriniz :")
-    ogrenci = input("Öğrencinin ismini giriniz :")
+    print("Sadece 1., 2., 3. ve 4. sınıfları ekleyebilirsiniz.")
+    sinif_ismi = input("Eklemek istediğiniz sınıfı giriniz : ")
+    if sinif_ismi == "1" or sinif_ismi == "2" or sinif_ismi == "3" or sinif_ismi == "4":
+        okul[sinif_ismi] = {}
+    else:
+        print("hatalı giriş yaptınız")
 
 
 def sinif_listele(okul:dict):
-    sinif = input("Öğrencinin sınıfını giriniz :")
-    sube = input("Öğrencinin şubesini giriniz :")
-    ogrenci = input("Öğrencinin ismini giriniz :")
+    for i in okul:
+        print("{}. sınıf".format(i))
 
 
 def sube_ekle(okul:dict):
-    pass
-
+    sinif = input("Hangi sınıfa ait şubeleri görmek istiyorsunuz : ")
+    while True:
+        print("""
+1- Yeni Şube Ekle
+2- Sınıfın Şubelerini Listele
+3- Ana Menüye Dön
+        """)
+        sec = input("işleminizi seçiniz : ")
+        if sec == "1":
+            print("Sadece A, B, C ve D şubelerini ekleyebilirsiniz.")
+            sube = input("Şube ismi giriniz : ")
+            if sube == "A" or sube == "B" or sube == "C" or sube == "D":
+                okul[sinif][sube] = {}
+            else:
+                print("Hatalı giriş yaptınız")
+        elif sec == "2":
+            for i in okul[sinif]:
+                print("{} Şubesi".format(i))
+        elif sec == "3":
+            break
 
 def sube_listele(okul:dict):
-    pass
+    sinif = input("Hangi sınıfa ait şubeleri görmek istiyorsunuz : ")
+    for i in okul:
+        print("{}. Sınıf Şubeleri".format(i))
+        for t in okul[i]:
+            print("{:>20} Şubesi".format(t))
 
 
 def ogrenci_ekle(okul:dict):
@@ -79,19 +103,72 @@ def ders_ekle(okul:dict):
     3- Dersleri Listele
     4- Ana Menüye dön.""")
         sec = input("seçiminizi yapınız : ")
+        if sec == "1":
+            ders_listesi = ["İngilizce", "Türkçe", "Matematik", "Fen", "Fizik", "Kimya", "Biyoloji", "Tarih", "Çince",
+                            "Resim"]
+            x = 0
+            for i in ders_listesi:
+                x+=1
+                print("{}. {}".format(x,i))
 
-
+            ders = int(input("Eklemek istediğiniz dersin sırasını giriniz : ")) -1
+            okul[sinif][sube][ogrenci][ders_listesi[ders]] = 0
+            print("Ders ekleme işlemi başarılı")
+        elif sec == "2":
+            x = 0
+            for i in okul[sinif][sube][ogrenci]:
+                x+=1
+                print("{}. Ders : {}".format(x,i))
+            cikarilacakDers = int(input("Çıkarmak istediğiniz ders numarasını girinişz : "))
+            def cikarma(cikarilacakDers):
+                y = 0
+                for i in okul[sinif][sube][ogrenci]:
+                    y+=1
+                    if y == cikarilacakDers:
+                        cikacak = i
+                        return cikacak
+            okul[sinif][sube][ogrenci].pop(cikarma(cikarilacakDers))
+        elif sec == "3":
+            x = 0
+            for i in okul[sinif][sube][ogrenci]:
+                x+=1
+                print("{}. Ders : {}".format(x,i))
+        elif sec == "4":
+            break
 
 def ders_listele(okul:dict):
-    pass
+    sinif = input("Öğrencinin sınıfını giriniz :")
+    sube = input("Öğrencinin şubesini giriniz :")
+    ogrenci = input("Öğrencinin ismini giriniz :")
+    t = 0
+    for i in okul[sinif][sube][ogrenci]:
+        t+=1
+        print("{}. Ders : {}".format(t,i))
 
 
 def not_ekle(okul:dict):
-    pass
-
+    sinif = input("Öğrencinin sınıfını giriniz :")
+    sube = input("Öğrencinin şubesini giriniz :")
+    ogrenci = input("Öğrencinin ismini giriniz :")
+    while True:
+        print("""
+1- Not Ekle
+2- Ana Menüye Dön
+        """)
+        sec = input("seçiminizi yapınız : ")
+        if sec == "1":
+            ders = input("not eklenecek dersin adını giriniz : ")
+            dersNot = int(input("Dersin notunu giriniz"))
+            okul[sinif][sube][ogrenci][ders] += dersNot
+        elif sec == "2":
+            break
 
 def not_goster(okul:dict):
-    pass
+    sinif = input("Öğrencinin sınıfını giriniz :")
+    sube = input("Öğrencinin şubesini giriniz :")
+    ogrenci = input("Öğrencinin ismini giriniz :")
+    for i in okul[sinif][sube][ogrenci].items():
+        print("{:<15}   :  {}".format(i[0], i[1]))
 
 
 def anaFonksiyon():
@@ -134,3 +211,6 @@ def anaFonksiyon():
         quit()
     else:
         print("Hatalı giriş yaptınız")
+
+while True:
+    anaFonksiyon()
