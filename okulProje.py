@@ -48,9 +48,7 @@ def sube_listele(okul:dict):
 def ogrenci_ekle(okul: dict):
     sinif = input("Hangi sınıfa öğrenci ekleyeceksiniz :")
     sube = input("Hangi şubeye öğrenci ekleyeceksiniz :")
-    if sinif not in okul or sube not in okul[sinif]:
-        print("Geçersiz sınıf veya şube.")
-        return
+
 
     while True:
         print("""
@@ -63,8 +61,12 @@ def ogrenci_ekle(okul: dict):
         sec = input("İşleminizi seçiniz : ")
         if sec == "1":
             ogrenci = input("Öğrenci ismini giriniz : ")
-            if sube not in okul[sinif]:
-                okul[sinif][sube] = []
+            #if sube not in okul[sinif]:
+            if sinif not in okul or sube not in okul[sinif]:
+                print("Geçersiz sınıf veya şube.")
+                return
+
+                #okul[sinif][sube] = []
             okul[sinif][sube].append(ogrenci)
             print("Yeni öğrenci ekleme işlemi başarılı")
         elif sec == "2":
@@ -209,33 +211,32 @@ def anaFonksiyon():
     print(menu)
     try:
         secim = int(input("Seçiminizi giriniz : "))
-        if secim == "1":
-            sinif_ekle(okul)
-        elif secim == "2":
-            sinif_listele(okul)
-        elif secim == "3":
-            sube_ekle(okul)
-        elif secim == "4":
-            sube_listele(okul)
-        elif secim == "5":
-            ogrenci_ekle(okul)
-        elif secim == "6":
-            ogrenci_listele(okul)
-        elif secim == "7":
-            ders_ekle(okul)
-        elif secim == "8":
-            ders_listele(okul)
-        elif secim == "9":
-            not_ekle(okul)
-        elif secim == "10":
-            not_goster(okul)
-        elif secim == "11":
-            quit()
+
     except ValueError:
         print("Lütfen geçerli bir sayı giriniz.")
         return
-    else:
-        print("Hatalı giriş yaptınız")
+    if secim == 1:
+        sinif_ekle(okul)
+    elif secim == 2:
+        sinif_listele(okul)
+    elif secim == 3:
+        sube_ekle(okul)
+    elif secim == 4:
+        sube_listele(okul)
+    elif secim == 5:
+        ogrenci_ekle(okul)
+    elif secim == 6:
+        ogrenci_listele(okul)
+    elif secim == 7:
+        ders_ekle(okul)
+    elif secim == 8:
+        ders_listele(okul)
+    elif secim == 9:
+        not_ekle(okul)
+    elif secim == 10:
+        not_goster(okul)
+    elif secim == 11:
+        quit()
 
 while True:
     anaFonksiyon()
