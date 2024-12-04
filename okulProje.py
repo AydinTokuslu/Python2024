@@ -1,7 +1,6 @@
 
 okul={}
 
-
 def sinif_ekle(okul:dict):
     print("Sadece 1., 2., 3. ve 4. sınıfları ekleyebilirsiniz.")
     sinif_ismi = input("Eklemek istediğiniz sınıfı giriniz : ")
@@ -60,7 +59,8 @@ def ogrenci_ekle(okul:dict):
         sec = input("işleminizi seçiniz : ")
         if sec == "1":
             ogrenci = input("öğrenci ismini giriniz : ")
-            okul[sinif][sube][ogrenci] = {}
+            #okul[sinif][sube][ogrenci] = {}
+            okul[sinif][sube] = [ogrenci]
             print("Yeni öğrenci ekleme işlemi başarılı")
         elif sec == "2":
             cikacakOgrenci = input("Çıkarılacak öğrenci ismini giriniz : ")
