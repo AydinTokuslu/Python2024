@@ -45,9 +45,13 @@ def sube_listele(okul:dict):
             print("{:>20} Şubesi".format(t))
 
 
-def ogrenci_ekle(okul:dict):
+def ogrenci_ekle(okul: dict):
     sinif = input("Hangi sınıfa öğrenci ekleyeceksiniz :")
     sube = input("Hangi şubeye öğrenci ekleyeceksiniz :")
+    if sinif not in okul or sube not in okul[sinif]:
+        print("Geçersiz sınıf veya şube.")
+        return
+
     while True:
         print("""
 1- Yeni Öğrenci Ekle
@@ -56,32 +60,46 @@ def ogrenci_ekle(okul:dict):
 4- Şubenin Öğrencilerini Listele
 5- Ana Menüye Dön
 """)
-        sec = input("işleminizi seçiniz : ")
+        sec = input("İşleminizi seçiniz : ")
         if sec == "1":
-            ogrenci = input("öğrenci ismini giriniz : ")
-            #okul[sinif][sube][ogrenci] = {}
-            okul[sinif][sube] = [ogrenci]
+            ogrenci = input("Öğrenci ismini giriniz : ")
+            if sube not in okul[sinif]:
+                okul[sinif][sube] = []
+            okul[sinif][sube].append(ogrenci)
             print("Yeni öğrenci ekleme işlemi başarılı")
         elif sec == "2":
             cikacakOgrenci = input("Çıkarılacak öğrenci ismini giriniz : ")
-            okul[sinif][sube].pop(cikacakOgrenci)
-            print("Öğrenci çıkarma işlemi başarılı")
+            if cikacakOgrenci in okul[sinif][sube]:
+                okul[sinif][sube].remove(cikacakOgrenci)
+                print("Öğrenci çıkarma işlemi başarılı")
+            else:
+                print("Bu isimde bir öğrenci bulunamadı.")
         elif sec == "3":
             degisecekOgrenci = input("Düzenlemek istediğiniz öğrenci ismi : ")
-            okul[sinif][sube].pop(degisecekOgrenci)
-            isim = input("Öğrencinin yeni ismini giriniz : ")
-            okul[sinif][sube][isim] = {}
-            print("Öğrenci isim düzenleme işlemi başarılı")
+            if degisecekOgrenci in okul[sinif][sube]:
+                okul[sinif][sube].remove(degisecekOgrenci)
+                yeni_isim = input("Öğrencinin yeni ismini giriniz : ")
+                okul[sinif][sube].append(yeni_isim)
+                print("Öğrenci isim düzenleme işlemi başarılı")
+            else:
+                print("Bu isimde bir öğrenci bulunamadı.")
         elif sec == "4":
-            t = 0
-            for i in okul[sinif][sube]:
-                t+=1
-                print("{}. {}".format(t,i))
+            for index, ogrenci in enumerate(okul[sinif][sube], start=1):
+                print(f"{index}. {ogrenci}")
         elif sec == "5":
             break
+        else:
+            print("Geçersiz seçim.")
 
 
 def ogrenci_listele(okul:dict):
+    for sinif, subeler in okul.items():
+        print(f"{sinif}. sınıf:")
+        for sube, ogrenciler in subeler.items():
+            print(f"  {sube} Şubesi:")
+            for ogrenci in ogrenciler:
+                print(f"    - {ogrenci}")
+    """
     for i in okul:
         print("{}. sınıf : ".format(i))
         for t in okul[i]:
@@ -90,7 +108,7 @@ def ogrenci_listele(okul:dict):
             for y in okul[i][t]:
                 z+=1
                 print("{:>20}. {}".format(z,y))
-
+    """
 
 def ders_ekle(okul:dict):
     sinif = input("Öğrencinin sınıfını giriniz :")
@@ -112,7 +130,10 @@ def ders_ekle(okul:dict):
                 print("{}. {}".format(x,i))
 
             ders = int(input("Eklemek istediğiniz dersin sırasını giriniz : ")) -1
+            if ogrenci not in okul[sinif][sube]:
+                okul[sinif][sube][ogrenci] = {}
             okul[sinif][sube][ogrenci][ders_listesi[ders]] = 0
+            #okul[sinif][sube][ogrenci][ders_listesi[ders]] = 0
             print("Ders ekleme işlemi başarılı")
         elif sec == "2":
             x = 0
@@ -186,29 +207,33 @@ def anaFonksiyon():
 11- Çıkış
 """
     print(menu)
-    secim = input("Seçiminizi giriniz : ")
-    if secim == "1":
-        sinif_ekle(okul)
-    elif secim == "2":
-        sinif_listele(okul)
-    elif secim == "3":
-        sube_ekle(okul)
-    elif secim == "4":
-        sube_listele(okul)
-    elif secim == "5":
-        ogrenci_ekle(okul)
-    elif secim == "6":
-        ogrenci_listele(okul)
-    elif secim == "7":
-        ders_ekle(okul)
-    elif secim == "8":
-        ders_listele(okul)
-    elif secim == "9":
-        not_ekle(okul)
-    elif secim == "10":
-        not_goster(okul)
-    elif secim == "11":
-        quit()
+    try:
+        secim = int(input("Seçiminizi giriniz : "))
+        if secim == "1":
+            sinif_ekle(okul)
+        elif secim == "2":
+            sinif_listele(okul)
+        elif secim == "3":
+            sube_ekle(okul)
+        elif secim == "4":
+            sube_listele(okul)
+        elif secim == "5":
+            ogrenci_ekle(okul)
+        elif secim == "6":
+            ogrenci_listele(okul)
+        elif secim == "7":
+            ders_ekle(okul)
+        elif secim == "8":
+            ders_listele(okul)
+        elif secim == "9":
+            not_ekle(okul)
+        elif secim == "10":
+            not_goster(okul)
+        elif secim == "11":
+            quit()
+    except ValueError:
+        print("Lütfen geçerli bir sayı giriniz.")
+        return
     else:
         print("Hatalı giriş yaptınız")
 
