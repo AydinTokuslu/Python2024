@@ -23,7 +23,7 @@ def kayitlariListele():
             print(ad+" "+soyad+" "+ tel_no)
 
 
-
+"""
 def kayitAra():
     print("")
     name = input("lütfen aramak istediğiniz ismi giriniz : ")
@@ -44,6 +44,27 @@ def kayitAra():
                 print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
     main()
 
+"""
+def kayitAra():
+    print("")
+    name = input("Lütfen aramak istediğiniz ismi giriniz: ")
+
+    with open("telefon_rehberi.txt", mode="r", encoding="utf-8") as file:
+        bilgiler = file.readlines()
+
+        bulundu = False  # Kayıt bulunup bulunmadığını takip eder
+        for bilgi in bilgiler:
+            bilgi = bilgi.strip()  # Satır sonundaki boşlukları ve yeni satır karakterini temizler
+            bilgi = bilgi.split(" ")  # Satırı boşluklara göre böl
+            ad, soyad, tel_no = bilgi[0], bilgi[1], bilgi[2]
+
+            if name == ad or name == soyad:
+                print(ad + " " + soyad + " " + tel_no)
+                bulundu = True  # Kayıt bulundu
+                break  # Aranan kişi bulunursa döngüden çık
+
+        if not bulundu:
+            print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
 
 
 name = ""
