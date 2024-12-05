@@ -22,29 +22,6 @@ def kayitlariListele():
             tel_no = bilgi[2]
             print(ad+" "+soyad+" "+ tel_no)
 
-
-"""
-def kayitAra():
-    print("")
-    name = input("lütfen aramak istediğiniz ismi giriniz : ")
-
-    with open("telefon_rehberi.txt", mode="r", encoding="utf-8") as file:
-        bilgiler = file.readlines()
-        #print(bilgiler)
-        for bilgi in bilgiler:
-            bilgi = bilgi.replace("\n","")
-            bilgi = bilgi.split(" ")
-            ad = bilgi[0]
-            soyad = bilgi[1]
-            tel_no = bilgi[2]
-
-            if name == ad or name == soyad:
-                print(ad+" "+soyad+" "+ tel_no)
-            else:
-                print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
-    main()
-
-"""
 def kayitAra():
     print("")
     name = input("Lütfen aramak istediğiniz ismi giriniz: ")
