@@ -12,11 +12,22 @@ def display_menu():
 
 
 def kayitlariListele():
-    pass
+    with open("telefon_rehberi.txt", mode="r", encoding="utf-8") as file:
+        bilgiler = file.readlines()
+        for bilgi in bilgiler:
+            bilgi = bilgi.replace("\n","")
+            bilgi = bilgi.split(" ")
+            ad = bilgi[0]
+            soyad = bilgi[1]
+            tel_no = bilgi[2]
+            print(ad+" "+soyad+" "+ tel_no)
+    print(records_list)
 
 
 def kayitAra():
-    pass
+    name = input("lütfen aramak istediğiniz ismi giriniz : ")
+    #if name in records_list:
+
 
 
 name = ""
