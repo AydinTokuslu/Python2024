@@ -21,12 +21,28 @@ def kayitlariListele():
             soyad = bilgi[1]
             tel_no = bilgi[2]
             print(ad+" "+soyad+" "+ tel_no)
-    print(records_list)
+
 
 
 def kayitAra():
+    print("")
     name = input("lütfen aramak istediğiniz ismi giriniz : ")
-    #if name in records_list:
+
+    with open("telefon_rehberi.txt", mode="r", encoding="utf-8") as file:
+        bilgiler = file.readlines()
+        #print(bilgiler)
+        for bilgi in bilgiler:
+            bilgi = bilgi.replace("\n","")
+            bilgi = bilgi.split(" ")
+            ad = bilgi[0]
+            soyad = bilgi[1]
+            tel_no = bilgi[2]
+
+            if name == ad or name == soyad:
+                print(ad+" "+soyad+" "+ tel_no)
+            else:
+                print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
+    main()
 
 
 
@@ -47,7 +63,7 @@ def kayitEkle():
     with open("telefon_rehberi.txt", mode="a", encoding="utf-8") as file:
        file.write(name+" "+surname+" "+telNo+"\n")
        records_list.append(file)
-
+    print(records_list)
 
 def kayitSil():
     pass
