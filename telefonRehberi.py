@@ -64,7 +64,27 @@ def kayitEkle():
     print(records_list)
 
 def kayitSil():
-    pass
+    silinecekIsim = input("Silinmesini istediğiniz kişinin ismini giriniz : ")
+
+    with open("telefon_rehberi.txt", mode="r", encoding="utf-8") as file:
+        bilgiler = file.readlines()
+
+        bulundu = False  # Kayıt bulunup bulunmadığını takip eder
+        for bilgi in bilgiler:
+            bilgi = bilgi.strip()  # Satır sonundaki boşlukları ve yeni satır karakterini temizler
+            bilgi = bilgi.split(" ")  # Satırı boşluklara göre böl
+            ad, soyad, tel_no = bilgi[0], bilgi[1], bilgi[2]
+
+            if silinecekIsim == ad or silinecekIsim == soyad:
+                print(ad + " " + soyad + " " + tel_no)
+                bulundu = True  # Kayıt bulundu
+
+                break  # Aranan kişi bulunursa döngüden çık
+
+        if not bulundu:
+            print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
+
+
 
 
 def main():
