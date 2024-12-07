@@ -78,14 +78,23 @@ def kayitSil():
             if silinecekIsim == ad or silinecekIsim == soyad:
                 print("Silinecek kişi : {}  {}  {}".format(ad,soyad,tel_no))
                 bulundu = True  # Kayıt bulundu
-                with open("telefon_rehberi.txt", "r+") as f:
-                    d = f.readlines()
-                    f.seek(0)
-                    for i in d:
-                        print(i)
-                        if i != "{}  {}  {}".format(ad,soyad,tel_no):
-                            f.write(i)
-                    f.truncate()
+                """
+                with open("telefon_rehberi.txt", "r") as f:
+                    lines = f.readlines()
+                with open("telefon_rehberi.txt", "w") as f:
+                    for line in lines:
+                        line = line.strip()  # Satır sonundaki boşlukları ve yeni satır karakterini temizler
+                        line = line.split(" ")  # Satırı boşluklara göre böl
+                        ad, soyad, tel_no = line[0], line[1], line[2]
+                        if ad != silinecekIsim or soyad != silinecekIsim:
+                        #if line.strip("\n") != silinecekIsim:
+                            f.write(ad+"\t")
+                            f.write(soyad+"\t")
+                            f.write(tel_no+"\n")
+                """
+                print("")
+                print(f"{silinecekIsim} kayıtlardan silinmiştir.")
+                #kayitlariListele()
                 break  # Aranan kişi bulunursa döngüden çık
 
         if not bulundu:
