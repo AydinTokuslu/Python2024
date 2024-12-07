@@ -76,9 +76,15 @@ def kayitSil():
             ad, soyad, tel_no = bilgi[0], bilgi[1], bilgi[2]
 
             if silinecekIsim == ad or silinecekIsim == soyad:
-                print(ad + " " + soyad + " " + tel_no)
+                print("Silinecek kişi : {}  {}  {}".format(ad,soyad,tel_no))
                 bulundu = True  # Kayıt bulundu
-
+                with open("telefon_rehberi.txt", "r+") as f:
+                    d = f.readlines()
+                    f.seek(0)
+                    for i in d:
+                        if i != "{}  {}  {}".format(ad,soyad,tel_no):
+                            f.write(i)
+                    f.truncate()
                 break  # Aranan kişi bulunursa döngüden çık
 
         if not bulundu:
