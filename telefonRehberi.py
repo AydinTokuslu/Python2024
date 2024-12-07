@@ -82,6 +82,7 @@ def kayitSil():
                     d = f.readlines()
                     f.seek(0)
                     for i in d:
+                        print(i)
                         if i != "{}  {}  {}".format(ad,soyad,tel_no):
                             f.write(i)
                     f.truncate()
