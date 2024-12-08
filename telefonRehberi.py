@@ -101,8 +101,6 @@ def kayitSil():
             print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
 
 
-
-
 def main():
     while True:
         display_menu()
