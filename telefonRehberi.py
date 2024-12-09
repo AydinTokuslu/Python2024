@@ -63,6 +63,8 @@ def kayitEkle():
        records_list.append(file)
     print(records_list)
 
+
+
 def kayitSil():
     silinecekIsim = input("Silinmesini istediğiniz kişinin ismini giriniz : ")
 
@@ -99,6 +101,9 @@ def kayitSil():
 
         if not bulundu:
             print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
+
+
+
 
 
 def main():
