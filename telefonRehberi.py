@@ -53,14 +53,36 @@ telNo = ""
 
 FILENAME = "telefon_rehberi.txt"
 
+
 def kayitEkle():
     print("Yeni kayıt ekle")
-    name = input("İsim: ")
-    surname = input("Soyisim: ")
-    telNo = input("Telefon numarası: ")
-    print(f"Yeni kayıt: {name} {surname} {telNo}\nYeni kayıt eklendi.")
+
+    while True:
+        name = input("İsim: ").strip()
+        if not name:
+            print("İsim boş olamaz. Lütfen tekrar girin.")
+            continue
+
+        surname = input("Soyisim: ").strip()
+        if not surname:
+            print("Soyisim boş olamaz. Lütfen tekrar girin.")
+            continue
+
+        telNo = input("Telefon numarası: ").strip()
+        if not telNo.isdigit():
+            print("Telefon numarası sadece rakamlardan oluşmalıdır. Lütfen tekrar girin.")
+            continue
+
+        break
+
+    # Kayıt ekleme işlemi
     with open(FILENAME, mode="a") as file:
-        file.write(name + " " + surname + " " + telNo + "\n")
+        file.write(f"{name} {surname} {telNo}\n")
+
+    print(f"Yeni kayıt eklendi: {name} {surname} {telNo}")
+
+
+
 
 
 
