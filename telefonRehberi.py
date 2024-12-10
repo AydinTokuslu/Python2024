@@ -12,7 +12,7 @@ def display_menu():
 
 
 def kayitlariListele():
-    with open("telefon_rehberi.txt", mode="r", encoding="utf-8") as file:
+    with open("telefon_rehberi.txt", mode="r") as file:
         bilgiler = file.readlines()
         for bilgi in bilgiler:
             bilgi = bilgi.replace("\n","")
@@ -26,7 +26,7 @@ def kayitAra():
     print("")
     name = input("Lütfen aramak istediğiniz ismi giriniz: ")
 
-    with open("telefon_rehberi.txt", mode="r", encoding="utf-8") as file:
+    with open("telefon_rehberi.txt", mode="r") as file:
         bilgiler = file.readlines()
 
         bulundu = False  # Kayıt bulunup bulunmadığını takip eder
@@ -58,17 +58,17 @@ def kayitEkle():
     surname = input("Soyisim : ")
     telNo = input("Telefon numarası : ")
     print(f"Yeni kayıt : {name} {surname} {telNo}\nYeni Kayıt Eklendi")
-    with open("telefon_rehberi.txt", mode="a", encoding="utf-8") as file:
+    with open("telefon_rehberi.txt", mode="a") as file:
        file.write(name+" "+surname+" "+telNo+"\n")
        records_list.append(file)
-    print(records_list)
+    #print(records_list)
 
 
 
 def kayitSil():
     silinecekIsim = input("Silinmesini istediğiniz kişinin ismini giriniz : ")
 
-    with open("telefon_rehberi.txt", mode="r", encoding="utf-8") as file:
+    with open("telefon_rehberi.txt", mode="r") as file:
         bilgiler = file.readlines()
 
         bulundu = False  # Kayıt bulunup bulunmadığını takip eder
@@ -83,8 +83,9 @@ def kayitSil():
                 """
                 with open("telefon_rehberi.txt", "r") as f:
                     lines = f.readlines()
+                """
                 with open("telefon_rehberi.txt", "w") as f:
-                    for line in lines:
+                    for line in bilgiler:
                         line = line.strip()  # Satır sonundaki boşlukları ve yeni satır karakterini temizler
                         line = line.split(" ")  # Satırı boşluklara göre böl
                         ad, soyad, tel_no = line[0], line[1], line[2]
@@ -93,7 +94,7 @@ def kayitSil():
                             f.write(ad+"\t")
                             f.write(soyad+"\t")
                             f.write(tel_no+"\n")
-                """
+
                 print("")
                 print(f"{silinecekIsim} kayıtlardan silinmiştir.")
                 #kayitlariListele()
