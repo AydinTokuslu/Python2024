@@ -12,7 +12,7 @@ def display_menu():
 
 
 def kayitlariListele():
-    with open("telefon_rehberi.txt", mode="r") as file:
+    with open(FILENAME, mode="r") as file:
         bilgiler = file.readlines()
         for bilgi in bilgiler:
             bilgi = bilgi.replace("\n","")
@@ -26,7 +26,7 @@ def kayitAra():
     print("")
     name = input("Lütfen aramak istediğiniz ismi giriniz: ")
 
-    with open("telefon_rehberi.txt", mode="r") as file:
+    with open(FILENAME, mode="r") as file:
         bilgiler = file.readlines()
 
         bulundu = False  # Kayıt bulunup bulunmadığını takip eder
@@ -48,27 +48,23 @@ name = ""
 surname = ""
 telNo = ""
 
-records_list = []
+FILENAME = "telefon_rehberi.txt"
+
 def kayitEkle():
-    print("yeni kayıt ekle")
-    global name
-    global surname
-    global telNo
-    name = input("İsim : ")
-    surname = input("Soyisim : ")
-    telNo = input("Telefon numarası : ")
-    print(f"Yeni kayıt : {name} {surname} {telNo}\nYeni Kayıt Eklendi")
-    with open("telefon_rehberi.txt", mode="a") as file:
-       file.write(name+" "+surname+" "+telNo+"\n")
-       records_list.append(file)
-    #print(records_list)
+    print("Yeni kayıt ekle")
+    name = input("İsim: ")
+    surname = input("Soyisim: ")
+    telNo = input("Telefon numarası: ")
+    print(f"Yeni kayıt: {name} {surname} {telNo}\nYeni kayıt eklendi.")
+    with open(FILENAME, mode="a") as file:
+        file.write(name + " " + surname + " " + telNo + "\n")
 
 
 
 def kayitSil():
     silinecekIsim = input("Silinmesini istediğiniz kişinin ismini giriniz : ")
 
-    with open("telefon_rehberi.txt", mode="r") as file:
+    with open(FILENAME, mode="r") as file:
         bilgiler = file.readlines()
 
         bulundu = False  # Kayıt bulunup bulunmadığını takip eder
