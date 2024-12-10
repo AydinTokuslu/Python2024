@@ -10,17 +10,20 @@ def display_menu():
 5-Çıkış
 """)
 
-
 def kayitlariListele():
-    with open(FILENAME, mode="r") as file:
-        bilgiler = file.readlines()
-        for bilgi in bilgiler:
-            bilgi = bilgi.replace("\n","")
-            bilgi = bilgi.split(" ")
-            ad = bilgi[0]
-            soyad = bilgi[1]
-            tel_no = bilgi[2]
-            print(ad+" "+soyad+" "+ tel_no)
+    try:
+        with open(FILENAME, mode="r") as file:
+            bilgiler = file.readlines()
+            if not bilgiler:
+                print("Kayıtlı kişi bulunmamaktadır.")
+            else:
+                for bilgi in bilgiler:
+                    bilgi = bilgi.strip()
+                    ad, soyad, tel_no = bilgi.split(" ")
+                    print(f"{ad} {soyad} {tel_no}")
+    except FileNotFoundError:
+        print("Telefon rehberi dosyası bulunamadı.")
+
 
 def kayitAra():
     print("")
