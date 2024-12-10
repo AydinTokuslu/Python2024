@@ -104,47 +104,44 @@ def kayitEkle():
     print(f"Yeni kayıt eklendi: {name} {surname} {telNo}")
 
 
-
-
-
-
 def kayitSil():
-    silinecekIsim = input("Silinmesini istediğiniz kişinin ismini giriniz : ")
+    silinecekIsim = input("Silinmesini istediğiniz kişinin ismini giriniz: ").strip()
 
-    with open(FILENAME, mode="r") as file:
-        bilgiler = file.readlines()
+    try:
+        with open(FILENAME, mode="r") as file:
+            bilgiler = file.readlines()
 
-        bulundu = False  # Kayıt bulunup bulunmadığını takip eder
+        bulundu = False
+        yeni_bilgiler = []
+
         for bilgi in bilgiler:
-            bilgi = bilgi.strip()  # Satır sonundaki boşlukları ve yeni satır karakterini temizler
-            bilgi = bilgi.split(" ")  # Satırı boşluklara göre böl
-            ad, soyad, tel_no = bilgi[0], bilgi[1], bilgi[2]
+            bilgi = bilgi.strip()
+            if not bilgi:
+                continue  # Boş satırları atla
+
+            parcalar = bilgi.split(" ")
+            if len(parcalar) != 3:  # Hatalı formatlı satırları atla
+                print(f"Geçersiz kayıt: {bilgi}")
+                yeni_bilgiler.append(bilgi + "\n")  # Hatalı kayıtları geri ekle
+                continue
+
+            ad, soyad, tel_no = parcalar
 
             if silinecekIsim == ad or silinecekIsim == soyad:
-                print("Silinecek kişi : {}  {}  {}".format(ad,soyad,tel_no))
-                bulundu = True  # Kayıt bulundu
-                """
-                with open("telefon_rehberi.txt", "r") as f:
-                    lines = f.readlines()
-                """
-                with open("telefon_rehberi.txt", "w") as f:
-                    for line in bilgiler:
-                        line = line.strip()  # Satır sonundaki boşlukları ve yeni satır karakterini temizler
-                        line = line.split(" ")  # Satırı boşluklara göre böl
-                        ad, soyad, tel_no = line[0], line[1], line[2]
-                        if ad != silinecekIsim or soyad != silinecekIsim:
-                        #if line.strip("\n") != silinecekIsim:
-                            f.write(ad+"\t")
-                            f.write(soyad+"\t")
-                            f.write(tel_no+"\n")
+                print(f"Silinecek kişi: {ad} {soyad} {tel_no}")
+                bulundu = True
+            else:
+                yeni_bilgiler.append(f"{ad} {soyad} {tel_no}\n")  # Diğer kayıtları listeye ekle
 
-                print("")
-                print(f"{silinecekIsim} kayıtlardan silinmiştir.")
-                #kayitlariListele()
-                break  # Aranan kişi bulunursa döngüden çık
+        if bulundu:
+            with open(FILENAME, mode="w") as file:
+                file.writelines(yeni_bilgiler)
+            print(f"{silinecekIsim} kayıtlardan silinmiştir.")
+        else:
+            print("Aradığınız kişi kayıtlarda bulunmamaktadır.")
+    except FileNotFoundError:
+        print("Telefon rehberi dosyası bulunamadı.")
 
-        if not bulundu:
-            print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
 
 def main():
     while True:
