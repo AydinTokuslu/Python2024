@@ -104,8 +104,6 @@ def kayitSil():
 
 
 
-
-
 def main():
     while True:
         display_menu()
