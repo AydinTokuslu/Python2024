@@ -69,9 +69,9 @@ def kayitAra():
             print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
 
 
-name = ""
-surname = ""
-telNo = ""
+#name = ""
+#surname = ""
+#telNo = ""
 
 FILENAME = "telefon_rehberi.txt"
 
@@ -105,40 +105,67 @@ def kayitEkle():
 
 
 def kayitSil():
-    silinecekIsim = input("Silinmesini istediğiniz kişinin ismini giriniz: ").strip()
+    silinecekIsim = input("Silinmesini istediğiniz kişinin ismini veya soyismini giriniz: ").strip()
 
     try:
         with open(FILENAME, mode="r") as file:
             bilgiler = file.readlines()
 
-        bulundu = False
+        bulunan_kisiler = []
         yeni_bilgiler = []
 
+        # Tüm kayıtları kontrol et
         for bilgi in bilgiler:
             bilgi = bilgi.strip()
             if not bilgi:
                 continue  # Boş satırları atla
 
             parcalar = bilgi.split(" ")
-            if len(parcalar) != 3:  # Hatalı formatlı satırları atla
-                print(f"Geçersiz kayıt: {bilgi}")
-                yeni_bilgiler.append(bilgi + "\n")  # Hatalı kayıtları geri ekle
+            if len(parcalar) != 3:
+                yeni_bilgiler.append(bilgi + "\n")  # Hatalı formatlı kayıtları geri ekle
                 continue
 
             ad, soyad, tel_no = parcalar
-
             if silinecekIsim == ad or silinecekIsim == soyad:
-                print(f"Silinecek kişi: {ad} {soyad} {tel_no}")
-                bulundu = True
+                bulunan_kisiler.append((ad, soyad, tel_no))
             else:
-                yeni_bilgiler.append(f"{ad} {soyad} {tel_no}\n")  # Diğer kayıtları listeye ekle
+                yeni_bilgiler.append(f"{ad} {soyad} {tel_no}\n")  # Diğer kayıtları ekle
 
-        if bulundu:
-            with open(FILENAME, mode="w") as file:
-                file.writelines(yeni_bilgiler)
-            print(f"{silinecekIsim} kayıtlardan silinmiştir.")
-        else:
+        if not bulunan_kisiler:
             print("Aradığınız kişi kayıtlarda bulunmamaktadır.")
+            return
+
+        # Aynı isim veya soyadı taşıyan kişileri listele
+        print("Eşleşen kişiler:")
+        for i, (ad, soyad, tel_no) in enumerate(bulunan_kisiler, start=1):
+            print(f"{i}: {ad} {soyad} {tel_no}")
+
+        # Kullanıcıdan seçim yapmasını iste
+        try:
+            secim = int(input("Silmek istediğiniz kaydın numarasını seçiniz (iptal için 0): "))
+            if secim == 0:
+                print("İşlem iptal edildi.")
+                return
+
+            secilen_kisi = bulunan_kisiler[secim - 1]  # Kullanıcının seçtiği kaydı al
+            print(f"Silinecek kişi: {secilen_kisi[0]} {secilen_kisi[1]} {secilen_kisi[2]}")
+        except (ValueError, IndexError):
+            print("Geçersiz seçim. İşlem iptal edildi.")
+            return
+
+        # Seçilen kaydı dosyadan sil
+        yeni_bilgiler = [
+            f"{ad} {soyad} {tel_no}\n"
+            for ad, soyad, tel_no in
+            [(bilgi.split(" ")[0], bilgi.split(" ")[1], bilgi.split(" ")[2]) for bilgi in bilgiler]
+            if (ad, soyad, tel_no) != secilen_kisi
+        ]
+
+        with open(FILENAME, mode="w") as file:
+            file.writelines(yeni_bilgiler)
+
+        print(f"{secilen_kisi[0]} {secilen_kisi[1]} kayıtlardan silinmiştir.")
+
     except FileNotFoundError:
         print("Telefon rehberi dosyası bulunamadı.")
 
