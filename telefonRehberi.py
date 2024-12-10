@@ -10,6 +10,28 @@ def display_menu():
 5-Çıkış
 """)
 
+
+def kayitlariListele():
+    try:
+        with open(FILENAME, mode="r") as file:
+            bilgiler = file.readlines()
+            if not bilgiler:
+                print("Kayıtlı kişi bulunmamaktadır.")
+            else:
+                for i, bilgi in enumerate(bilgiler, start=1):
+                    bilgi = bilgi.strip()
+                    if not bilgi:
+                        continue
+                    parcalar = bilgi.split(" ")
+                    if len(parcalar) != 3:
+                        print(f"Geçersiz kayıt (Satır {i}): {bilgi}")
+                        continue
+                    ad, soyad, tel_no = parcalar
+                    print(f"{ad} {soyad} {tel_no}")
+    except FileNotFoundError:
+        print("Telefon rehberi dosyası bulunamadı.")
+
+"""
 def kayitlariListele():
     try:
         with open(FILENAME, mode="r") as file:
@@ -23,7 +45,7 @@ def kayitlariListele():
                     print(f"{ad} {soyad} {tel_no}")
     except FileNotFoundError:
         print("Telefon rehberi dosyası bulunamadı.")
-
+"""
 
 def kayitAra():
     print("")
@@ -124,12 +146,10 @@ def kayitSil():
         if not bulundu:
             print("Aradığınız kişi kayıtlarda bulunmamaktadır. Ana menüye yönlendiriliyorsunuz!!!")
 
-
-
 def main():
     while True:
         display_menu()
-        secim = input("lütfen menüden seçiminizi yapınız : ")
+        secim = input("Lütfen menüden seçiminizi yapınız: ")
         if secim == "1":
             kayitlariListele()
         elif secim == "2":
@@ -138,7 +158,10 @@ def main():
             kayitEkle()
         elif secim == "4":
             kayitSil()
-        else:
+        elif secim == "5":
+            print("Çıkış yapılıyor. Hoşça kalın!")
             break
+        else:
+            print("Geçersiz seçim, lütfen tekrar deneyin.")
 
 main()
