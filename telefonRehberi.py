@@ -153,11 +153,12 @@ def kayitSil():
             print("Geçersiz seçim. İşlem iptal edildi.")
             return
 
-        # Seçilen kaydı dosyadan sil
+        # Seçilen kaydı dosyadan çıkar
         yeni_bilgiler = [
             f"{ad} {soyad} {tel_no}\n"
-            for ad, soyad, tel_no in
-            [(bilgi.split(" ")[0], bilgi.split(" ")[1], bilgi.split(" ")[2]) for bilgi in bilgiler]
+            for ad, soyad, tel_no in [
+                bilgi.strip().split(" ") for bilgi in bilgiler if bilgi.strip()
+            ]
             if (ad, soyad, tel_no) != secilen_kisi
         ]
 
