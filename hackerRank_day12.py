@@ -26,6 +26,8 @@ class Student(Person):
 #
 # Write your function here
 
+
+
 line = input().split()
 firstName = line[0]
 lastName = line[1]
